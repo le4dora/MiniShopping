@@ -1,2 +1,2 @@
-# MusicPlayer
+# MiniShopping
 team
