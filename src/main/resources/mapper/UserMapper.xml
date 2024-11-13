@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.secondhand.mapper.UserMapper">
+
+<!-- 查询全部   -->
+    <select id="findAll" resultType="com.example.secondhand.entity.User">
+        select * from user;
+    </select>
+
+<!-- 动态sql查询   -->
+    <update id="update">
+        update user
+        <set>
+            <if test="name != null">
+                name = #{name}
+            </if>
+
+            <if test="age != age">
+                age = #{age}
+            </if>
+
+            <if test="gender != gender">
+                gender = #{gender}
+            </if>
+
+            <if test="phone != phone">
+                phone = #{phone}
+            </if>
+
+            <if test="address != address">
+                address = #{address}
+            </if>
+
+            <if test="password != password">
+                password = #{password}
+            </if>
+
+
+        </set>
+
+        <where>
+            id = #{id}
+        </where>
+
+    </update>
+
+<!--    -->
+
+</mapper>
