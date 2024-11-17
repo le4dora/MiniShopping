@@ -1,0 +1,73 @@
+    .productList {
+        display: flex;
+        flex-wrap: wrap;
+        /* 允许换行 */
+        gap: 20px;
+        /* 商品之间的间距 */
+        overflow-y: auto;
+        max-height: 600px;
+        overflow: visible;
+    }
+
+
+    .noProducts {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 300px;
+        /* 设置一个固定的高度，使提示信息居中显示 */
+        width: 100%;
+        text-align: center;
+        background-color: #f7f7f7;
+        border-radius: 8px;
+        border: 1px dashed #ccc;
+    }
+
+    .nothing {
+        font-size: 18px;
+        color: #555;
+        font-weight: bold;
+        padding: 20px;
+    }
+
+
+    .product {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-width: 200px;
+        max-width: 250px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        /* 添加平滑的过渡效果 */
+    }
+
+
+    .product:hover {
+        transform: scale(1.1);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .productImage {
+        height: 150px;
+        object-fit: cover;
+        /* 保持图片的宽高比 */
+        border-radius: 4px;
+    }
+
+    .productName {
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    .productPrice {
+        font-size: 14px;
+        color: #f60;
+        margin-top: 5px;
+    }

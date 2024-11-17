@@ -1,0 +1,44 @@
+.el-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    /* 设置上下左右的边距 */
+}
+
+.el-aside {
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.el-main {
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    flex: 1;
+}
+
+h2 {
+    color: #333;
+}
+
+p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.el-button {
+    font-size: 16px;
+    border-radius: 8px;
+    padding: 10px 20px;
+    /* 调整按钮内边距 */
+}
+
+/* 让图片保持自适应且不变形 */
+.el-aside img {
+    width: 40px;
+    height: auto;
+    object-fit: contain;
+    /* 让图片保持原比例自适应宽高 */
+    border-radius: 8px;
+}
