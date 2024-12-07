@@ -19,9 +19,9 @@
                         router
                         style="display: flex; justify-content: space-between; margin-left: 40px;"
                         >
-                        <el-menu-item index="/Homepage/Products" style="flex: 1; text-align: center;">商品首页</el-menu-item>
-                        <el-menu-item index="/Homepage/ShopCar"   style="flex: 1; text-align: center;">购物车</el-menu-item>
-                        <el-menu-item index="/Homepage/about"  style="flex: 1; text-align: center;">个人中心</el-menu-item>
+                        <el-menu-item index="Products" :route="{ path: '/Homepage/Products' }" style="flex: 1; text-align: center;">商品首页</el-menu-item>
+                        <el-menu-item index="ShopCar" :route="{ path: '/Homepage/ShopCar' }" style="flex: 1; text-align: center;">购物车</el-menu-item>
+                        <el-menu-item index="Personal" :route="{ path: '/Homepage/Personal'}" style="flex: 1; text-align: center;">个人中心</el-menu-item>
                     </el-menu>
                 </el-col>
                 <!-- 右侧应用名称部分 -->
@@ -57,13 +57,13 @@ export default {
         setActiveIndexFromUrl() {
             const path = this.$route.path;  // 获取当前路由的路径
             if (path.includes('Products')) {
-                this.activeIndex = '/Homepage/Products';
+                this.activeIndex = 'Products';
             } else if (path.includes('ShopCar')) {
-                this.activeIndex = '/Homepage/ShopCar';
-            } else if (path.includes('about')) {
-                this.activeIndex = '/Homepage/about';
+                this.activeIndex = 'ShopCar';
+            } else if (path.includes('Personal')) {
+                this.activeIndex = 'Personal';
             } else {
-                this.activeIndex = '/Homepage/Products';
+                this.activeIndex = 'Products';
             }
         },
         handleSelect(key, keyPath) {
