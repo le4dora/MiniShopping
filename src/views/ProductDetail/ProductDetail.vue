@@ -1,7 +1,9 @@
 <template>
     <el-container style="min-width: 600px; margin: 20px auto;">
     <!-- 左侧：商品图片 -->
-        <el-aside width="20%" style="padding: 10px 20px; border-right: 1px solid #ddd;">
+        <el-aside width="20%" 
+        style="padding: 10px 20px; border-right: 1px solid #ddd;background-color: white;border-radius: 8px;
+        display: flex; justify-content: center; align-items: center;">
             <img 
                 src="https://via.placeholder.com/300x400" 
                 alt="商品图片" 
