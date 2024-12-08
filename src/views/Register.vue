@@ -1,96 +1,3 @@
-
-
-<!--<template>-->
-<!--  <body id = "poster">-->
-<!--  <el-form class="register_container" label-position="left" label-width="0px">-->
-
-<!--    <h3 class="login_title">-->
-<!--      注册-->
-<!--    </h3>-->
-<!--    <el-form-item>-->
-<!--      <el-input type="text" v-model="registerForm.phone" auto-complete="off" placeholder="手机"></el-input>-->
-<!--    </el-form-item>-->
-
-<!--    <el-form-item>-->
-<!--      <el-input type="password" v-model="registerForm.password" auto-complete="off" placeholder="密码"></el-input>-->
-<!--    </el-form-item>-->
-
-
-
-<!--    <el-form-item style="width: 100%;">-->
-<!--      <el-button type="primary" @click="Register()" style="background-color: #2c3e50;border: none;">确定</el-button>-->
-<!--      <el-button @click="Quit()" style="background-color: #dae2ef;border: none;">取消</el-button>-->
-
-<!--    </el-form-item>-->
-<!--  </el-form>-->
-
-
-<!--  </body>-->
-<!--</template>-->
-
-
-<!--<script>-->
-<!--import instance from "@/request";-->
-
-<!--export default {-->
-<!--  name: "Register",-->
-<!--  data(){-->
-<!--    return {-->
-<!--      registerForm: {-->
-<!--        phone: '',-->
-<!--        password: '',-->
-<!--      }-->
-<!--    }-->
-<!--  },-->
-<!--  methods:{-->
-<!--    Register() {-->
-<!--      instance.post('/user/register', this.registerForm).then(response => {-->
-<!--        let data = response.data;-->
-<!--        console.log(data)-->
-<!--        console.log(data.data)-->
-<!--        if (data.data != null) {-->
-<!--          this.$router.push('/')-->
-<!--        }-->
-<!--      })-->
-<!--    },-->
-<!--    Quit(){-->
-<!--      this.$router.push('/')-->
-<!--    }-->
-<!--  }-->
-<!--}-->
-<!--</script>-->
-
-<!--<style>-->
-
-
-<!--#poster {-->
-<!--  background-position: center;-->
-<!--  width: 100%;-->
-<!--  height: 100%;-->
-<!--  background-size: cover;-->
-<!--  position: fixed;-->
-<!--}-->
-
-<!--body {-->
-<!--  margin: 0;-->
-<!--  padding: 0;-->
-<!--}-->
-
-<!--.register_container {-->
-<!--  border-radius: 15px;-->
-<!--  background-clip: padding-box;-->
-<!--  margin: 90px auto;-->
-<!--  padding: 35px 35px 15px 35px;-->
-<!--  width: 350px;-->
-<!--  background: #fff;-->
-<!--  border: 1px solid #eaeaee;-->
-<!--  box-shadow: 0 0 25px #cac6c6;-->
-
-<!--}-->
-
-<!--</style>-->
-
-
 <template>
   <body id="poster">
   <el-form class="register_container" label-position="left" label-width="0px">
@@ -133,12 +40,12 @@ export default {
         let data = response.data;
         console.log(data);
         if (data.data != null) {
-          this.$router.push('/');
+          this.$router.push('/Login');
         }
       })
     },
     Quit() {
-      this.$router.push('/');
+      this.$router.push('/Homepage');
     }
   }
 }

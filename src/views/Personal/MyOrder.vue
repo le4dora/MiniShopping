@@ -52,7 +52,7 @@ export default {
   methods: {
     fetchData() {
       instance.get('/product').then(response => {
-        // 假设返回的 response.data.data 是包含商品数据的数组
+        // 返回的 response.data.data 是包含商品数据的数组
         this.tableData = response.data.data;
         console.log(this.tableData);
       });

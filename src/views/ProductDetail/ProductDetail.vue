@@ -3,7 +3,7 @@
     <!-- 左侧：商品图片 -->
         <el-aside width="20%" style="padding: 10px 20px; border-right: 1px solid #ddd;">
             <img 
-                src="https://via.placeholder.com/300x400" 
+                src="./ProductImg/39ef5d2bf812a71e57c886beda4d4e5.png"
                 alt="商品图片" 
                 style="width: 100%; height: auto; object-fit: contain; border-radius: 8px;"
             />
@@ -14,7 +14,7 @@
             <el-row>
                 <el-col :span="24">
                     <h2 style="font-size: 24px; font-weight: bold; color: #333; display: flex; align-items: center;">
-                        商品名称
+                        高等数学
                     </h2>
                     <img 
                         src="https://via.placeholder.com/40" 

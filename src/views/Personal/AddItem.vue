@@ -100,7 +100,7 @@ export default {
     },
     // 发布商品的 API 调用
     postProductData() {
-      // 模拟发送请求，这里你需要根据实际情况修改 API 路径
+      // 发送请求
       instance.post('/products', this.form)
           .then(response => {
             if (response.data.success) {
