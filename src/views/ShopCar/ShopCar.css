@@ -1,0 +1,87 @@
+.Shopcar-page {
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    width: 1250px;
+    margin: 0 auto;
+}
+
+.m-top-20 {
+    margin-top: 50px;
+}
+
+.cart {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    color: white;
+    background-color: #333;
+    border: 1px solid #333;
+    padding: 8px;
+    text-align: center;
+}
+
+td {
+    padding: 8px;
+    text-align: center;
+}
+
+.tc {
+    text-align: center;
+}
+
+.goods {
+    display: flex;
+    align-items: center;
+}
+
+.goods img {
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+}
+
+.name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.f16 {
+    font-size: 16px;
+}
+
+.red {
+    color: red;
+}
+
+.cart-none {
+    text-align: center;
+    padding: 20px;
+}
+
+.action {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.batch {
+    font-size: 20px;
+    margin-left: 125px;
+    margin-right: auto;
+}
+
+.total {
+    margin-left: auto;
+    margin-right: 25px;
+}
+
+.el-button {
+    margin-left: 10px;
+
+}
