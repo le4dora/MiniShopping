@@ -50,12 +50,12 @@
                 </el-col>
             </el-row>
 
-            <!-- 上架时间 -->
+            <!-- 上架时间
             <el-row style="margin-top: 10px;">
                 <el-col :span="24">
                     <div style="font-size: 16px; color: #888;">添加商品时间：{{ productDetails.create_time }}</div>
                 </el-col>
-            </el-row>
+            </el-row> -->
 
             <!-- 加入购物车按钮 -->
             <el-row style="margin-top: 30px;">
