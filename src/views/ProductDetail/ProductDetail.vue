@@ -1,17 +1,13 @@
 <template>
     <el-container style="min-width: 600px; margin: 20px auto;">
-    <!-- 左侧：商品图片 -->
-        <el-aside width="20%" 
-        style="padding: 10px 20px; border-right: 1px solid #ddd;background-color: white;border-radius: 8px;
+        <!-- 左侧：商品图片 -->
+        <el-aside width="20%" style="padding: 10px 20px; border-right: 1px solid #ddd;background-color: white;border-radius: 8px;
         display: flex; justify-content: center; align-items: center;">
-            <img 
-                :src="productDetails.product_pic"
-                alt="商品图片" 
-                style="width: 100%; height: auto; object-fit: contain; border-radius: 8px;"
-            />
+            <img :src="productDetails.product_pic" alt="商品图片"
+                style="width: 100%; height: auto; object-fit: contain; border-radius: 8px;" />
         </el-aside>
 
-    <!-- 右侧：商品详情信息 -->
+        <!-- 右侧：商品详情信息 -->
         <el-main style="padding: 20px 40px;">
             <el-row>
                 <el-col :span="24">
@@ -61,7 +57,7 @@
             <el-row style="margin-top: 30px;">
                 <el-col :span="24">
                     <el-button type="primary" style="width: auto; padding: 10px 20px;" @click="addToCart">
-                            加入购物车
+                        加入购物车
                     </el-button>
                 </el-col>
             </el-row>
@@ -70,42 +66,70 @@
 </template>
 
 <script>
-    import './ProductDetail.css'
-    // 引入配置好的 axios 实例
-    import axiosRequest from '../axiosRequset';
-    export default {
-        data() {
-            return {
-                productDetails: null, // 用于存储商品详情
-            };
-        },
-        created() {
+import './ProductDetail.css'
+// 引入配置好的 axios 实例
+import axiosRequest from '../axiosRequset';
+import { Message } from 'element-ui';
+export default {
+    data() {
+        return {
+            productDetails: null, // 用于存储商品详情
+        };
+    },
+    created() {
         // 获取当前URL中的id参数
-            const id = this.$route.query.id;
-            if (id) {
+        const id = this.$route.query.id;
+        if (id) {
             // 发起axios请求
             this.fetchProductDetails(id);
-            }
-        },
-        methods: {
+        }
+    },
+    methods: {
         // 请求商品详情
         fetchProductDetails(id) {
-            axiosRequest.get(`/product/detail?id=${id}`)   
-            .then(response => {
-            // 成功获取数据后，将数据存入productDetails
-                this.productDetails = response.data.data;
-            console.log(response);
-            })
-            .catch(error => {
-            // 处理请求失败的情况
-            console.error("Error fetching product details:", error);
-            });
+            axiosRequest.get(`/product/detail?id=${id}`)
+                .then(response => {
+                    // 成功获取数据后，将数据存入productDetails
+                    this.productDetails = response.data.data;
+                    console.log(response);
+                })
+                .catch(error => {
+                    // 处理请求失败的情况
+                    console.error("Error fetching product details:", error);
+                });
         },
-            // 加入购物车
-            addToCart() {
-                this.$message.success('商品已加入购物车');
-            }
+        // 加入购物车
+        addToCart() {
+            // this.$message.success('商品已加入购物车');
+            let id = this.$route.query.id;
+            id = Number(id);
+            axiosRequest.get('/user/cart')
+                .then(response => {
+                    console.log(response);
+                    let list = response.data.data;
+                    if (list.includes(id)) {
+                        this.$message.success('商品已经加入过购物车了！');
+                    } else {
+                        list.push(id);
+                        axiosRequest.put('/user/cart', { list: list })
+                            .then(response => {
+                                console.log(response);
+                                this.$message.success('商品成功加入购物车！');
+                            })
+                            .catch(error => {
+                                // 处理请求失败的情况
+                                console.error("Error fetching product details:", error);
+                                this.$message.success('发生未知错误，请联系管理员处理！');
+                            });
+                    }
+                })
+                .catch(error => {
+                    // 处理请求失败的情况
+                    console.error("Error fetching product details:", error);
+                    this.$message.success('发生未知错误，请联系管理员处理！');
+                });
+
         }
     }
+}
 </script>
-
