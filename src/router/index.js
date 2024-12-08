@@ -86,7 +86,7 @@ router.beforeEach((to, from, next) => {
   if (token) { // 登录状态放行
     next();
   } else {
-    if (whiteList.indexOf(to.path) !== -1 || to.path.startsWith('/Homepage')) {// 在白名单中，放行
+    if (whiteList.indexOf(to.path) !== -1) {// 在白名单中，放行
       next();
     }else {// 不在白名单，重定向到登录页
       next('/Login');
