@@ -14,6 +14,10 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
+    redirect: '/Homepage',
+  },
+  {
+    path: '/Homepage',
     name: 'Homepage',
     component: HomePage,
     children: [
@@ -70,25 +74,23 @@ const routes = [
 ]
 
 
+
 const router = new VueRouter({
   routes
 })
 // 添加路由守卫
 router.beforeEach((to, from, next) => {
-  const whiteList =['/Login', '/Register','/']
+  const whiteList =['/Login', '/Register','/Homepage',]
   const token = localStorage.getItem('token');
-
   if (token) { // 登录状态放行
     next();
   } else {
-    if (whiteList.indexOf(to.path) !== -1) {// 在白名单中，放行
+    if (whiteList.indexOf(to.path) !== -1 ) {// 在白名单中，放行
       next();
-    }else {// 不在白名单，重定向到登录页
+    } else {// 不在白名单，重定向到登录
       next('/Login');
     }
   }
-
-
 })
 
 export default router

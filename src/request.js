@@ -5,7 +5,7 @@ const instance = axios.create({
     headers: {
         'Access-Control-Allow-Origin': '*'
     },
-    baseURL: 'http://localhost:8081',
+    baseURL: 'http://localhost:8080',
     timeout: 10000,
 });
 

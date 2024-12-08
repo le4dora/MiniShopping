@@ -5,7 +5,7 @@
         style="padding: 10px 20px; border-right: 1px solid #ddd;background-color: white;border-radius: 8px;
         display: flex; justify-content: center; align-items: center;">
             <img 
-                src="https://via.placeholder.com/300x400" 
+                :src="productDetails.product_pic"
                 alt="商品图片" 
                 style="width: 100%; height: auto; object-fit: contain; border-radius: 8px;"
             />
@@ -16,20 +16,21 @@
             <el-row>
                 <el-col :span="24">
                     <h2 style="font-size: 24px; font-weight: bold; color: #333; display: flex; align-items: center;">
-                        商品名称
+                        {{ productDetails.product_name }}
                     </h2>
-                    <img 
+                    <!-- <img 
                         src="https://via.placeholder.com/40" 
                         alt="卖家头像" 
                         style="border-radius: 50%; margin-right: 10px;vertical-align: middle;"
-                    /><span style="font-size: 16px; color: #999;vertical-align: middle;">卖家：张三</span>
+                    /> -->
+                    <!-- <span style="font-size: 16px; color: #999;vertical-align: middle;">{{ productDetails.product_name }}</span> -->
                 </el-col>
             </el-row>
 
             <!-- 商品价格 -->
             <el-row style="margin-top: 20px;">
                 <el-col :span="24">
-                    <div style="font-size: 22px; font-weight: bold; color: #ff4d4f;">￥199.99</div>
+                    <div style="font-size: 22px; font-weight: bold; color: #ff4d4f;">￥{{ productDetails.price }}</div>
                 </el-col>
             </el-row>
 
@@ -37,7 +38,7 @@
             <el-row style="margin-top: 20px;">
                 <el-col :span="24">
                     <p style="font-size: 16px; color: #555; white-space: pre-line; word-wrap: break-word;">
-                        商品描述：广工出品，谁买谁知道
+                        商品详情：{{ productDetails.description }}
                     </p>
                 </el-col>
             </el-row>
@@ -45,14 +46,14 @@
             <!-- 产品状态 -->
             <el-row style="margin-top: 20px;">
                 <el-col :span="24">
-                    <div style="font-size: 16px; color: #888;">产品状态：在售</div>
+                    <div style="font-size: 16px; color: #888;">产品状态：{{ productDetails.state }}</div>
                 </el-col>
             </el-row>
 
             <!-- 上架时间 -->
             <el-row style="margin-top: 10px;">
                 <el-col :span="24">
-                    <div style="font-size: 16px; color: #888;">上架时间：2024-10-01</div>
+                    <div style="font-size: 16px; color: #888;">添加商品时间：{{ productDetails.create_time }}</div>
                 </el-col>
             </el-row>
 
@@ -69,14 +70,42 @@
 </template>
 
 <script>
-import './ProductDetail.css'
-export default {
-    methods: {
-        // 加入购物车
-        addToCart() {
-            this.$message.success('商品已加入购物车');
+    import './ProductDetail.css'
+    // 引入配置好的 axios 实例
+    import axiosRequest from '../axiosRequset';
+    export default {
+        data() {
+            return {
+                productDetails: null, // 用于存储商品详情
+            };
+        },
+        created() {
+        // 获取当前URL中的id参数
+            const id = this.$route.query.id;
+            if (id) {
+            // 发起axios请求
+            this.fetchProductDetails(id);
+            }
+        },
+        methods: {
+        // 请求商品详情
+        fetchProductDetails(id) {
+            axiosRequest.get(`/product/detail?id=${id}`)   
+            .then(response => {
+            // 成功获取数据后，将数据存入productDetails
+                this.productDetails = response.data.data;
+            console.log(response);
+            })
+            .catch(error => {
+            // 处理请求失败的情况
+            console.error("Error fetching product details:", error);
+            });
+        },
+            // 加入购物车
+            addToCart() {
+                this.$message.success('商品已加入购物车');
+            }
         }
     }
-}
 </script>
 
